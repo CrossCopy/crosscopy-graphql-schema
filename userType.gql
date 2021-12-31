@@ -1,0 +1,32 @@
+type User {
+  _id: String!
+  name: String
+  email: String!
+  createdAt: String
+  profiles: [String]
+  clipboardItems: [ClipboardItem]
+}
+
+type Query {
+  me: User
+  users: [User]
+  userByEmail(email: String!): User
+  userById(id: String!): User
+  allItems(id: ID): [ClipboardItem]
+}
+
+type LoginResponse {
+  accessToken: String
+  user: User
+  success: Boolean
+}
+
+type RegisterResponse {
+  success: Boolean
+  message: String
+}
+
+type Mutation {
+  login(email: String!, password: String!): LoginResponse
+  register(name: String!, email: String!, password: String!): RegisterResponse
+}
