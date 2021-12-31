@@ -28,5 +28,5 @@ type RegisterResponse {
 
 type Mutation {
   login(email: String!, password: String!): LoginResponse
-  register(name: String!, email: String!, password: String!): RegisterResponse
+  register(username: String!, email: String!, password: String!): RegisterResponse
 }
