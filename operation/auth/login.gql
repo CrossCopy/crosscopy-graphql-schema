@@ -1,0 +1,19 @@
+mutation login($email: String!, $password: String!) {
+  login(email: $email, password: $password) {
+    accessToken
+    user {
+      email
+      _id
+      username
+      profiles
+      clipboardItems {
+        id
+        value
+        type
+        profile
+        createdAt
+      }
+    }
+    success
+  }
+}
