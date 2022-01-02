@@ -1,0 +1,13 @@
+type Record {
+  inUserId: Int!
+  userId: String!
+  value: String
+  type: String!
+  profile: String
+  createdAt: String
+}
+
+type Query {
+  records: [Record]
+  recordsLaterThanId(id: Int!): [Record]
+}
