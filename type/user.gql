@@ -17,6 +17,7 @@ type Query {
   me: User
   userByEmail(email: String!): User
   userById(id: String!): User
+  usernameExists(username: String!): Boolean
 }
 
 type LoginResponse {
