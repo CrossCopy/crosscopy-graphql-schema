@@ -3,6 +3,11 @@ enum Role {
   ADMIN
 }
 
+enum FilterListType {
+  BLACKLIST
+  WHITELIST
+}
+
 type User {
   _id: String!
   username: String
@@ -11,6 +16,9 @@ type User {
   profiles: [String]
   records: [Record]
   role: Role
+  filterListType: FilterListType
+  blacklist: [String]!
+  whitelist: [String]!
 }
 
 type Query {
