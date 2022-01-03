@@ -55,6 +55,7 @@ export type Query = {
   recordsLaterThanId?: Maybe<Array<Maybe<Record>>>;
   userByEmail?: Maybe<User>;
   userById?: Maybe<User>;
+  usernameExists?: Maybe<Scalars['Boolean']>;
 };
 
 
@@ -70,6 +71,11 @@ export type QueryUserByEmailArgs = {
 
 export type QueryUserByIdArgs = {
   id: Scalars['String'];
+};
+
+
+export type QueryUsernameExistsArgs = {
+  username: Scalars['String'];
 };
 
 export type Record = {
@@ -267,6 +273,7 @@ export type QueryResolvers<ContextType = any, ParentType extends ResolversParent
   recordsLaterThanId?: Resolver<Maybe<Array<Maybe<ResolversTypes['Record']>>>, ParentType, ContextType, RequireFields<QueryRecordsLaterThanIdArgs, 'id'>>;
   userByEmail?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType, RequireFields<QueryUserByEmailArgs, 'email'>>;
   userById?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType, RequireFields<QueryUserByIdArgs, 'id'>>;
+  usernameExists?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType, RequireFields<QueryUsernameExistsArgs, 'username'>>;
 };
 
 export type RecordResolvers<ContextType = any, ParentType extends ResolversParentTypes['Record'] = ResolversParentTypes['Record']> = {
