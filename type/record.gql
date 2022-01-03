@@ -3,8 +3,8 @@ type Record {
   userId: String!
   value: String!
   type: String!
-  profile: String
-  createdAt: String
+  profile: String!
+  createdAt: String!
   device: String!
 }
 
