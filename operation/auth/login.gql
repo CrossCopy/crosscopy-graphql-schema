@@ -12,6 +12,7 @@ mutation login($email: String!, $password: String!) {
         type
         profile
         createdAt
+        device
       }
     }
     success
