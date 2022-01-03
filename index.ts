@@ -20,6 +20,11 @@ export type AdditionalEntityFields = {
   type?: InputMaybe<Scalars['String']>;
 };
 
+export enum FilterListType {
+  Blacklist = 'BLACKLIST',
+  Whitelist = 'WHITELIST'
+}
+
 export type LoginResponse = {
   __typename?: 'LoginResponse';
   accessToken?: Maybe<Scalars['String']>;
@@ -103,12 +108,15 @@ export enum Role {
 export type User = {
   __typename?: 'User';
   _id: Scalars['String'];
+  blacklist: Array<Maybe<Scalars['String']>>;
   createdAt?: Maybe<Scalars['String']>;
   email: Scalars['String'];
+  filterListType?: Maybe<FilterListType>;
   profiles?: Maybe<Array<Maybe<Scalars['String']>>>;
   records?: Maybe<Array<Maybe<Record>>>;
   role?: Maybe<Role>;
   username?: Maybe<Scalars['String']>;
+  whitelist: Array<Maybe<Scalars['String']>>;
 };
 
 
@@ -182,6 +190,7 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 export type ResolversTypes = {
   AdditionalEntityFields: AdditionalEntityFields;
   String: ResolverTypeWrapper<Scalars['String']>;
+  FilterListType: FilterListType;
   LoginResponse: ResolverTypeWrapper<LoginResponse>;
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
   Mutation: ResolverTypeWrapper<{}>;
@@ -296,12 +305,15 @@ export type RegisterResponseResolvers<ContextType = any, ParentType extends Reso
 
 export type UserResolvers<ContextType = any, ParentType extends ResolversParentTypes['User'] = ResolversParentTypes['User']> = {
   _id?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  blacklist?: Resolver<Array<Maybe<ResolversTypes['String']>>, ParentType, ContextType>;
   createdAt?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   email?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  filterListType?: Resolver<Maybe<ResolversTypes['FilterListType']>, ParentType, ContextType>;
   profiles?: Resolver<Maybe<Array<Maybe<ResolversTypes['String']>>>, ParentType, ContextType>;
   records?: Resolver<Maybe<Array<Maybe<ResolversTypes['Record']>>>, ParentType, ContextType>;
   role?: Resolver<Maybe<ResolversTypes['Role']>, ParentType, ContextType>;
   username?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  whitelist?: Resolver<Array<Maybe<ResolversTypes['String']>>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
