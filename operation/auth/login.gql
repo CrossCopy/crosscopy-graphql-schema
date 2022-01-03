@@ -6,8 +6,8 @@ mutation login($email: String!, $password: String!) {
       _id
       username
       profiles
-      clipboardItems {
-        id
+      records {
+        inUserId
         value
         type
         profile
