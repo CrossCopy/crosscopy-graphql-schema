@@ -1,10 +1,11 @@
 type Record {
   inUserId: Int!
   userId: String!
-  value: String
+  value: String!
   type: String!
   profile: String
   createdAt: String
+  device: String!
 }
 
 type Query {

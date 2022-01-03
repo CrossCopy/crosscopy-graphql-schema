@@ -81,11 +81,12 @@ export type QueryUsernameExistsArgs = {
 export type Record = {
   __typename?: 'Record';
   createdAt?: Maybe<Scalars['String']>;
+  device: Scalars['String'];
   inUserId: Scalars['Int'];
   profile?: Maybe<Scalars['String']>;
   type: Scalars['String'];
   userId: Scalars['String'];
-  value?: Maybe<Scalars['String']>;
+  value: Scalars['String'];
 };
 
 export type RegisterResponse = {
@@ -278,11 +279,12 @@ export type QueryResolvers<ContextType = any, ParentType extends ResolversParent
 
 export type RecordResolvers<ContextType = any, ParentType extends ResolversParentTypes['Record'] = ResolversParentTypes['Record']> = {
   createdAt?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  device?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   inUserId?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   profile?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   type?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   userId?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  value?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  value?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
