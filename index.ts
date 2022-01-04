@@ -20,6 +20,13 @@ export type AdditionalEntityFields = {
   type?: InputMaybe<Scalars['String']>;
 };
 
+export type AddRecordResponse = {
+  __typename?: 'AddRecordResponse';
+  id?: Maybe<Scalars['Int']>;
+  message?: Maybe<Scalars['String']>;
+  success?: Maybe<Scalars['Boolean']>;
+};
+
 export enum FilterListType {
   Blacklist = 'BLACKLIST',
   Whitelist = 'WHITELIST'
@@ -35,8 +42,17 @@ export type LoginResponse = {
 
 export type Mutation = {
   __typename?: 'Mutation';
+  addRecord?: Maybe<AddRecordResponse>;
   login?: Maybe<LoginResponse>;
   register?: Maybe<RegisterResponse>;
+};
+
+
+export type MutationAddRecordArgs = {
+  device: Scalars['String'];
+  profile: Scalars['String'];
+  type: RecordType;
+  value: Scalars['String'];
 };
 
 
@@ -89,10 +105,15 @@ export type Record = {
   device: Scalars['String'];
   inUserId: Scalars['Int'];
   profile?: Maybe<Scalars['String']>;
-  type: Scalars['String'];
+  type: RecordType;
   userId: Scalars['String'];
   value: Scalars['String'];
 };
+
+export enum RecordType {
+  Image = 'IMAGE',
+  Text = 'TEXT'
+}
 
 export type RegisterResponse = {
   __typename?: 'RegisterResponse';
@@ -112,7 +133,9 @@ export type User = {
   createdAt?: Maybe<Scalars['String']>;
   email: Scalars['String'];
   filterListType?: Maybe<FilterListType>;
+  lastRecordId: Scalars['Int'];
   profiles?: Maybe<Array<Maybe<Scalars['String']>>>;
+  recordCount: Scalars['Int'];
   records?: Maybe<Array<Maybe<Record>>>;
   role?: Maybe<Role>;
   username?: Maybe<Scalars['String']>;
@@ -190,13 +213,15 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 export type ResolversTypes = {
   AdditionalEntityFields: AdditionalEntityFields;
   String: ResolverTypeWrapper<Scalars['String']>;
+  AddRecordResponse: ResolverTypeWrapper<AddRecordResponse>;
+  Int: ResolverTypeWrapper<Scalars['Int']>;
+  Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
   FilterListType: FilterListType;
   LoginResponse: ResolverTypeWrapper<LoginResponse>;
-  Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
   Mutation: ResolverTypeWrapper<{}>;
   Query: ResolverTypeWrapper<{}>;
-  Int: ResolverTypeWrapper<Scalars['Int']>;
   Record: ResolverTypeWrapper<Record>;
+  RecordType: RecordType;
   RegisterResponse: ResolverTypeWrapper<RegisterResponse>;
   Role: Role;
   User: ResolverTypeWrapper<User>;
@@ -206,11 +231,12 @@ export type ResolversTypes = {
 export type ResolversParentTypes = {
   AdditionalEntityFields: AdditionalEntityFields;
   String: Scalars['String'];
-  LoginResponse: LoginResponse;
+  AddRecordResponse: AddRecordResponse;
+  Int: Scalars['Int'];
   Boolean: Scalars['Boolean'];
+  LoginResponse: LoginResponse;
   Mutation: {};
   Query: {};
-  Int: Scalars['Int'];
   Record: Record;
   RegisterResponse: RegisterResponse;
   User: User;
@@ -263,6 +289,13 @@ export type MapDirectiveArgs = {
 
 export type MapDirectiveResolver<Result, Parent, ContextType = any, Args = MapDirectiveArgs> = DirectiveResolverFn<Result, Parent, ContextType, Args>;
 
+export type AddRecordResponseResolvers<ContextType = any, ParentType extends ResolversParentTypes['AddRecordResponse'] = ResolversParentTypes['AddRecordResponse']> = {
+  id?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+  message?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  success?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
 export type LoginResponseResolvers<ContextType = any, ParentType extends ResolversParentTypes['LoginResponse'] = ResolversParentTypes['LoginResponse']> = {
   accessToken?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   message?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
@@ -272,6 +305,7 @@ export type LoginResponseResolvers<ContextType = any, ParentType extends Resolve
 };
 
 export type MutationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = {
+  addRecord?: Resolver<Maybe<ResolversTypes['AddRecordResponse']>, ParentType, ContextType, RequireFields<MutationAddRecordArgs, 'device' | 'profile' | 'type' | 'value'>>;
   login?: Resolver<Maybe<ResolversTypes['LoginResponse']>, ParentType, ContextType, RequireFields<MutationLoginArgs, 'email' | 'password'>>;
   register?: Resolver<Maybe<ResolversTypes['RegisterResponse']>, ParentType, ContextType, RequireFields<MutationRegisterArgs, 'email' | 'password' | 'username'>>;
 };
@@ -291,7 +325,7 @@ export type RecordResolvers<ContextType = any, ParentType extends ResolversParen
   device?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   inUserId?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   profile?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  type?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  type?: Resolver<ResolversTypes['RecordType'], ParentType, ContextType>;
   userId?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   value?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
@@ -309,7 +343,9 @@ export type UserResolvers<ContextType = any, ParentType extends ResolversParentT
   createdAt?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   email?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   filterListType?: Resolver<Maybe<ResolversTypes['FilterListType']>, ParentType, ContextType>;
+  lastRecordId?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   profiles?: Resolver<Maybe<Array<Maybe<ResolversTypes['String']>>>, ParentType, ContextType>;
+  recordCount?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   records?: Resolver<Maybe<Array<Maybe<ResolversTypes['Record']>>>, ParentType, ContextType>;
   role?: Resolver<Maybe<ResolversTypes['Role']>, ParentType, ContextType>;
   username?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
@@ -318,6 +354,7 @@ export type UserResolvers<ContextType = any, ParentType extends ResolversParentT
 };
 
 export type Resolvers<ContextType = any> = {
+  AddRecordResponse?: AddRecordResponseResolvers<ContextType>;
   LoginResponse?: LoginResponseResolvers<ContextType>;
   Mutation?: MutationResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;

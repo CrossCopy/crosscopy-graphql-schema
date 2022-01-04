@@ -1,8 +1,13 @@
+enum RecordType {
+  TEXT
+  IMAGE
+}
+
 type Record {
   inUserId: Int!
   userId: String!
   value: String!
-  type: String!
+  type: RecordType!
   profile: String
   createdAt: String
   device: String!
@@ -11,4 +16,14 @@ type Record {
 type Query {
   records: [Record]
   recordsLaterThanId(id: Int!): [Record]
+}
+
+type AddRecordResponse {
+  success: Boolean
+  message: String
+  id: Int
+}
+
+type Mutation {
+  addRecord(type: RecordType!, value: String!, device: String!, profile: String!): AddRecordResponse
 }
