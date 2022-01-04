@@ -21,6 +21,8 @@ type User {
   whitelist: [String]!
   recordCount: Int!
   lastRecordId: Int!
+  recordCount: Int!
+  lastRecordId: Int!
 }
 
 type Query {
