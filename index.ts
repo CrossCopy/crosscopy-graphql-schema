@@ -1,12 +1,11 @@
+import { GraphQLResolveInfo } from 'graphql';
 import gql from 'graphql-tag';
-import * as VueApolloComposable from '@vue/apollo-composable';
-import * as VueCompositionApi from '@vue/composition-api';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
-export type ReactiveFunction<TParam> = () => TParam;
+export type RequireFields<T, K extends keyof T> = { [X in Exclude<keyof T, K>]?: T[X] } & { [P in K]-?: NonNullable<T[P]> };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -102,7 +101,7 @@ export type QueryUsernameExistsArgs = {
 
 export type Record = {
   __typename?: 'Record';
-  createdAt: Scalars['String'];
+  createdAt?: Maybe<Scalars['String']>;
   device: Scalars['String'];
   inUserId: Scalars['Int'];
   profile?: Maybe<Scalars['String']>;
@@ -143,108 +142,50 @@ export type User = {
   whitelist: Array<Maybe<Scalars['String']>>;
 };
 
-export type LoginMutationVariables = Exact<{
-  email: Scalars['String'];
-  password: Scalars['String'];
-}>;
 
 
-export type LoginMutation = { __typename?: 'Mutation', login?: { __typename?: 'LoginResponse', accessToken?: string | null | undefined, message?: string | null | undefined, success?: boolean | null | undefined, user?: { __typename?: 'User', email: string, _id: string, username?: string | null | undefined, profiles?: Array<string | null | undefined> | null | undefined, filterListType?: FilterListType | null | undefined, blacklist: Array<string | null | undefined>, whitelist: Array<string | null | undefined>, records?: Array<{ __typename?: 'Record', inUserId: number, value: string, type: string, profile: string, createdAt: string, device: string } | null | undefined> | null | undefined } | null | undefined } | null | undefined };
-
-export type OnlineQueryVariables = Exact<{ [key: string]: never; }>;
+export type ResolverTypeWrapper<T> = Promise<T> | T;
 
 
-export type OnlineQuery = { __typename?: 'Query', online?: boolean | null | undefined };
+export type ResolverWithResolve<TResult, TParent, TContext, TArgs> = {
+  resolve: ResolverFn<TResult, TParent, TContext, TArgs>;
+};
+export type Resolver<TResult, TParent = {}, TContext = {}, TArgs = {}> = ResolverFn<TResult, TParent, TContext, TArgs> | ResolverWithResolve<TResult, TParent, TContext, TArgs>;
 
-export type SignupMutationVariables = Exact<{
-  username: Scalars['String'];
-  email: Scalars['String'];
-  password: Scalars['String'];
-}>;
+export type ResolverFn<TResult, TParent, TContext, TArgs> = (
+  parent: TParent,
+  args: TArgs,
+  context: TContext,
+  info: GraphQLResolveInfo
+) => Promise<TResult> | TResult;
 
+export type SubscriptionSubscribeFn<TResult, TParent, TContext, TArgs> = (
+  parent: TParent,
+  args: TArgs,
+  context: TContext,
+  info: GraphQLResolveInfo
+) => AsyncIterable<TResult> | Promise<AsyncIterable<TResult>>;
 
-export type SignupMutation = { __typename?: 'Mutation', register?: { __typename?: 'RegisterResponse', success?: boolean | null | undefined, message?: string | null | undefined } | null | undefined };
+export type SubscriptionResolveFn<TResult, TParent, TContext, TArgs> = (
+  parent: TParent,
+  args: TArgs,
+  context: TContext,
+  info: GraphQLResolveInfo
+) => TResult | Promise<TResult>;
 
-
-export const LoginDocument = gql`
-    mutation login($email: String!, $password: String!) {
-  login(email: $email, password: $password) {
-    accessToken
-    message
-    user {
-      email
-      _id
-      username
-      profiles
-      filterListType
-      blacklist
-      whitelist
-      records {
-        inUserId
-        value
-        type
-        profile
-        createdAt
-        device
-      }
-    }
-    success
-  }
+export interface SubscriptionSubscriberObject<TResult, TKey extends string, TParent, TContext, TArgs> {
+  subscribe: SubscriptionSubscribeFn<{ [key in TKey]: TResult }, TParent, TContext, TArgs>;
+  resolve?: SubscriptionResolveFn<TResult, { [key in TKey]: TResult }, TContext, TArgs>;
 }
-    `;
 
-/**
- * __useLoginMutation__
- *
- * To run a mutation, you first call `useLoginMutation` within a Vue component and pass it any options that fit your needs.
- * When your component renders, `useLoginMutation` returns an object that includes:
- * - A mutate function that you can call at any time to execute the mutation
- * - Several other properties: https://v4.apollo.vuejs.org/api/use-mutation.html#return
- *
- * @param options that will be passed into the mutation, supported options are listed on: https://v4.apollo.vuejs.org/guide-composable/mutation.html#options;
- *
- * @example
- * const { mutate, loading, error, onDone } = useLoginMutation({
- *   variables: {
- *     email: // value for 'email'
- *     password: // value for 'password'
- *   },
- * });
- */
-export function useLoginMutation(options: VueApolloComposable.UseMutationOptions<LoginMutation, LoginMutationVariables> | ReactiveFunction<VueApolloComposable.UseMutationOptions<LoginMutation, LoginMutationVariables>>) {
-  return VueApolloComposable.useMutation<LoginMutation, LoginMutationVariables>(LoginDocument, options);
+export interface SubscriptionResolverObject<TResult, TParent, TContext, TArgs> {
+  subscribe: SubscriptionSubscribeFn<any, TParent, TContext, TArgs>;
+  resolve: SubscriptionResolveFn<TResult, any, TContext, TArgs>;
 }
-export type LoginMutationCompositionFunctionResult = VueApolloComposable.UseMutationReturn<LoginMutation, LoginMutationVariables>;
-export const OnlineDocument = gql`
-    query online {
-  online
-}
-    `;
 
-/**
- * __useOnlineQuery__
- *
- * To run a query within a Vue component, call `useOnlineQuery` and pass it any options that fit your needs.
- * When your component renders, `useOnlineQuery` returns an object from Apollo Client that contains result, loading and error properties
- * you can use to render your UI.
- *
- * @param options that will be passed into the query, supported options are listed on: https://v4.apollo.vuejs.org/guide-composable/query.html#options;
- *
- * @example
- * const { result, loading, error } = useOnlineQuery();
- */
-export function useOnlineQuery(options: VueApolloComposable.UseQueryOptions<OnlineQuery, OnlineQueryVariables> | VueCompositionApi.Ref<VueApolloComposable.UseQueryOptions<OnlineQuery, OnlineQueryVariables>> | ReactiveFunction<VueApolloComposable.UseQueryOptions<OnlineQuery, OnlineQueryVariables>> = {}) {
-  return VueApolloComposable.useQuery<OnlineQuery, OnlineQueryVariables>(OnlineDocument, {}, options);
-}
-export type OnlineQueryCompositionFunctionResult = VueApolloComposable.UseQueryReturn<OnlineQuery, OnlineQueryVariables>;
-export const SignupDocument = gql`
-    mutation Signup($username: String!, $email: String!, $password: String!) {
-  register(username: $username, email: $email, password: $password) {
-    success
-    message
-  }
-}
-    `;
+export type SubscriptionObject<TResult, TKey extends string, TParent, TContext, TArgs> =
+  | SubscriptionSubscriberObject<TResult, TKey, TParent, TContext, TArgs>
+  | SubscriptionResolverObject<TResult, TParent, TContext, TArgs>;
 
 export type SubscriptionResolver<TResult, TKey extends string, TParent = {}, TContext = {}, TArgs = {}> =
   | ((...args: any[]) => SubscriptionObject<TResult, TKey, TParent, TContext, TArgs>)
