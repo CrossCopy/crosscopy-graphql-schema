@@ -19,6 +19,8 @@ type User {
   filterListType: FilterListType
   blacklist: [String]!
   whitelist: [String]!
+  recordCount: Int!
+  lastRecordId: Int!
 }
 
 type Query {
