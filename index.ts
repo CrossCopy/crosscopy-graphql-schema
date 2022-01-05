@@ -29,6 +29,7 @@ export type AddRecordResponse = {
 
 export enum FilterListType {
   Blacklist = 'BLACKLIST',
+  Mixed = 'MIXED',
   Whitelist = 'WHITELIST'
 }
 
@@ -132,13 +133,13 @@ export type User = {
   blacklist: Array<Maybe<Scalars['String']>>;
   createdAt?: Maybe<Scalars['String']>;
   email: Scalars['String'];
-  filterListType?: Maybe<FilterListType>;
+  filterListType: FilterListType;
   lastRecordId: Scalars['Int'];
   profiles?: Maybe<Array<Maybe<Scalars['String']>>>;
   recordCount: Scalars['Int'];
   records?: Maybe<Array<Maybe<Record>>>;
-  role?: Maybe<Role>;
-  username?: Maybe<Scalars['String']>;
+  role: Role;
+  username: Scalars['String'];
   whitelist: Array<Maybe<Scalars['String']>>;
 };
 
@@ -342,13 +343,13 @@ export type UserResolvers<ContextType = any, ParentType extends ResolversParentT
   blacklist?: Resolver<Array<Maybe<ResolversTypes['String']>>, ParentType, ContextType>;
   createdAt?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   email?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  filterListType?: Resolver<Maybe<ResolversTypes['FilterListType']>, ParentType, ContextType>;
+  filterListType?: Resolver<ResolversTypes['FilterListType'], ParentType, ContextType>;
   lastRecordId?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   profiles?: Resolver<Maybe<Array<Maybe<ResolversTypes['String']>>>, ParentType, ContextType>;
   recordCount?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   records?: Resolver<Maybe<Array<Maybe<ResolversTypes['Record']>>>, ParentType, ContextType>;
-  role?: Resolver<Maybe<ResolversTypes['Role']>, ParentType, ContextType>;
-  username?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  role?: Resolver<ResolversTypes['Role'], ParentType, ContextType>;
+  username?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   whitelist?: Resolver<Array<Maybe<ResolversTypes['String']>>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };

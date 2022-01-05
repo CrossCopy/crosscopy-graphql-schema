@@ -6,17 +6,18 @@ enum Role {
 enum FilterListType {
   BLACKLIST
   WHITELIST
+  MIXED
 }
 
 type User {
   _id: String!
-  username: String
+  username: String!
   email: String!
   createdAt: String
   profiles: [String]
   records: [Record]
-  role: Role
-  filterListType: FilterListType
+  role: Role!
+  filterListType: FilterListType!
   blacklist: [String]!
   whitelist: [String]!
   recordCount: Int!
