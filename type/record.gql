@@ -8,7 +8,7 @@ type Record {
   userId: String!
   value: String!
   type: RecordType!
-  profile: String
+  profile: String!
   createdAt: String
   device: String!
 }
@@ -25,5 +25,10 @@ type AddRecordResponse {
 }
 
 type Mutation {
-  addRecord(type: RecordType!, value: String!, device: String!, profile: String!): AddRecordResponse
+  addRecord(
+    type: RecordType!
+    value: String!
+    device: String!
+    profile: String!
+  ): AddRecordResponse
 }
