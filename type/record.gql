@@ -24,11 +24,12 @@ type AddRecordResponse {
   id: Int
 }
 
+type DeleteRecordResponse {
+  success: Boolean
+  message: String
+}
+
 type Mutation {
-  addRecord(
-    type: RecordType!
-    value: String!
-    device: String!
-    profile: String!
-  ): AddRecordResponse
+  addRecord(type: RecordType!, value: String!, device: String!, profile: String!): AddRecordResponse
+  deleteRecord(inUserId: Int!): DeleteRecordResponse
 }

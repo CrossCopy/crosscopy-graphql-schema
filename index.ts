@@ -27,6 +27,12 @@ export type AddRecordResponse = {
   success?: Maybe<Scalars['Boolean']>;
 };
 
+export type DeleteRecordResponse = {
+  __typename?: 'DeleteRecordResponse';
+  message?: Maybe<Scalars['String']>;
+  success?: Maybe<Scalars['Boolean']>;
+};
+
 export enum FilterListType {
   Blacklist = 'BLACKLIST',
   Mixed = 'MIXED',
@@ -44,6 +50,7 @@ export type LoginResponse = {
 export type Mutation = {
   __typename?: 'Mutation';
   addRecord?: Maybe<AddRecordResponse>;
+  deleteRecord?: Maybe<DeleteRecordResponse>;
   login?: Maybe<LoginResponse>;
   register?: Maybe<RegisterResponse>;
 };
@@ -54,6 +61,11 @@ export type MutationAddRecordArgs = {
   profile: Scalars['String'];
   type: RecordType;
   value: Scalars['String'];
+};
+
+
+export type MutationDeleteRecordArgs = {
+  inUserId: Scalars['Int'];
 };
 
 
@@ -218,6 +230,7 @@ export type ResolversTypes = {
   AddRecordResponse: ResolverTypeWrapper<AddRecordResponse>;
   Int: ResolverTypeWrapper<Scalars['Int']>;
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
+  DeleteRecordResponse: ResolverTypeWrapper<DeleteRecordResponse>;
   FilterListType: FilterListType;
   LoginResponse: ResolverTypeWrapper<LoginResponse>;
   Mutation: ResolverTypeWrapper<{}>;
@@ -236,6 +249,7 @@ export type ResolversParentTypes = {
   AddRecordResponse: AddRecordResponse;
   Int: Scalars['Int'];
   Boolean: Scalars['Boolean'];
+  DeleteRecordResponse: DeleteRecordResponse;
   LoginResponse: LoginResponse;
   Mutation: {};
   Query: {};
@@ -298,6 +312,12 @@ export type AddRecordResponseResolvers<ContextType = any, ParentType extends Res
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
+export type DeleteRecordResponseResolvers<ContextType = any, ParentType extends ResolversParentTypes['DeleteRecordResponse'] = ResolversParentTypes['DeleteRecordResponse']> = {
+  message?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  success?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
 export type LoginResponseResolvers<ContextType = any, ParentType extends ResolversParentTypes['LoginResponse'] = ResolversParentTypes['LoginResponse']> = {
   accessToken?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   message?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
@@ -308,6 +328,7 @@ export type LoginResponseResolvers<ContextType = any, ParentType extends Resolve
 
 export type MutationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = {
   addRecord?: Resolver<Maybe<ResolversTypes['AddRecordResponse']>, ParentType, ContextType, RequireFields<MutationAddRecordArgs, 'device' | 'profile' | 'type' | 'value'>>;
+  deleteRecord?: Resolver<Maybe<ResolversTypes['DeleteRecordResponse']>, ParentType, ContextType, RequireFields<MutationDeleteRecordArgs, 'inUserId'>>;
   login?: Resolver<Maybe<ResolversTypes['LoginResponse']>, ParentType, ContextType, RequireFields<MutationLoginArgs, 'email' | 'password'>>;
   register?: Resolver<Maybe<ResolversTypes['RegisterResponse']>, ParentType, ContextType, RequireFields<MutationRegisterArgs, 'email' | 'password' | 'username'>>;
 };
@@ -358,6 +379,7 @@ export type UserResolvers<ContextType = any, ParentType extends ResolversParentT
 
 export type Resolvers<ContextType = any> = {
   AddRecordResponse?: AddRecordResponseResolvers<ContextType>;
+  DeleteRecordResponse?: DeleteRecordResponseResolvers<ContextType>;
   LoginResponse?: LoginResponseResolvers<ContextType>;
   Mutation?: MutationResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
