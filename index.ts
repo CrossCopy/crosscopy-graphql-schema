@@ -137,6 +137,7 @@ export type User = {
   lastRecordId: Scalars['Int'];
   profiles?: Maybe<Array<Maybe<Scalars['String']>>>;
   recordCount: Scalars['Int'];
+  recordQuota: Scalars['Int'];
   records?: Maybe<Array<Maybe<Record>>>;
   role: Role;
   username: Scalars['String'];
@@ -347,6 +348,7 @@ export type UserResolvers<ContextType = any, ParentType extends ResolversParentT
   lastRecordId?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   profiles?: Resolver<Maybe<Array<Maybe<ResolversTypes['String']>>>, ParentType, ContextType>;
   recordCount?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  recordQuota?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   records?: Resolver<Maybe<Array<Maybe<ResolversTypes['Record']>>>, ParentType, ContextType>;
   role?: Resolver<ResolversTypes['Role'], ParentType, ContextType>;
   username?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
