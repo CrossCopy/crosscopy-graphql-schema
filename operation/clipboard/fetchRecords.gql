@@ -1,0 +1,11 @@
+query {
+  records {
+    type
+    inUserId
+    userId
+    value
+    profile
+    createdAt
+    device
+  }
+}
