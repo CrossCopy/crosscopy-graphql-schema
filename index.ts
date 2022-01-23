@@ -121,7 +121,7 @@ export type QueryUsernameExistsArgs = {
 
 export type Record = {
   __typename?: 'Record';
-  createdAt: Scalars['String'];
+  createdAt?: Maybe<Scalars['String']>;
   device: Scalars['String'];
   inUserId: Scalars['Int'];
   profile: Scalars['String'];
@@ -361,7 +361,7 @@ export type QueryResolvers<ContextType = any, ParentType extends ResolversParent
 };
 
 export type RecordResolvers<ContextType = any, ParentType extends ResolversParentTypes['Record'] = ResolversParentTypes['Record']> = {
-  createdAt?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  createdAt?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   device?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   inUserId?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   profile?: Resolver<ResolversTypes['String'], ParentType, ContextType>;

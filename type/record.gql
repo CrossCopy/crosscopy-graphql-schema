@@ -9,7 +9,7 @@ type Record {
   value: String!
   type: RecordType!
   profile: String!
-  createdAt: String!
+  createdAt: String
   device: String!
 }
 
