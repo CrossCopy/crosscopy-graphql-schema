@@ -44,7 +44,37 @@ type RegisterResponse {
   message: String
 }
 
+enum AddFilterListType {
+  WHITELIST
+  BLACKLIST
+}
+
+type AddFilterResponse {
+  success: Boolean
+  message: String
+}
+
+type ChangeFilterTypeResponse {
+  success: Boolean
+  message: String
+}
+
+type UpdateProfileResponse {
+  success: Boolean
+  message: String
+}
+
+type RenameProfileResponse {
+  success: Boolean
+  message: String
+}
+
 type Mutation {
   login(email: String!, password: String!): LoginResponse
   register(username: String!, email: String!, password: String!): RegisterResponse
+  addFilter(type: AddFilterListType!, regex: String!): AddFilterResponse
+  changeFilterType(type: FilterListType!): ChangeFilterTypeResponse
+  addProfile(profileName: String!): UpdateProfileResponse
+  deleteProfile(profileName: String!): UpdateProfileResponse
+  renameProfile(originalProfileName: String!, newProfileName: String!): RenameProfileResponse
 }
