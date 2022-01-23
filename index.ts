@@ -53,6 +53,7 @@ export type Mutation = {
   deleteRecord?: Maybe<DeleteRecordResponse>;
   login?: Maybe<LoginResponse>;
   register?: Maybe<RegisterResponse>;
+  updateRecord?: Maybe<UpdateRecordResponse>;
 };
 
 
@@ -79,6 +80,12 @@ export type MutationRegisterArgs = {
   email: Scalars['String'];
   password: Scalars['String'];
   username: Scalars['String'];
+};
+
+
+export type MutationUpdateRecordArgs = {
+  inUserId: Scalars['Int'];
+  newValue: Scalars['String'];
 };
 
 export type Query = {
@@ -114,7 +121,7 @@ export type QueryUsernameExistsArgs = {
 
 export type Record = {
   __typename?: 'Record';
-  createdAt?: Maybe<Scalars['String']>;
+  createdAt: Scalars['String'];
   device: Scalars['String'];
   inUserId: Scalars['Int'];
   profile: Scalars['String'];
@@ -138,6 +145,13 @@ export enum Role {
   Admin = 'ADMIN',
   User = 'USER'
 }
+
+export type UpdateRecordResponse = {
+  __typename?: 'UpdateRecordResponse';
+  message: Scalars['String'];
+  record?: Maybe<Record>;
+  success: Scalars['Boolean'];
+};
 
 export type User = {
   __typename?: 'User';
@@ -239,6 +253,7 @@ export type ResolversTypes = {
   RecordType: RecordType;
   RegisterResponse: ResolverTypeWrapper<RegisterResponse>;
   Role: Role;
+  UpdateRecordResponse: ResolverTypeWrapper<UpdateRecordResponse>;
   User: ResolverTypeWrapper<User>;
 };
 
@@ -255,6 +270,7 @@ export type ResolversParentTypes = {
   Query: {};
   Record: Record;
   RegisterResponse: RegisterResponse;
+  UpdateRecordResponse: UpdateRecordResponse;
   User: User;
 };
 
@@ -331,6 +347,7 @@ export type MutationResolvers<ContextType = any, ParentType extends ResolversPar
   deleteRecord?: Resolver<Maybe<ResolversTypes['DeleteRecordResponse']>, ParentType, ContextType, RequireFields<MutationDeleteRecordArgs, 'inUserId'>>;
   login?: Resolver<Maybe<ResolversTypes['LoginResponse']>, ParentType, ContextType, RequireFields<MutationLoginArgs, 'email' | 'password'>>;
   register?: Resolver<Maybe<ResolversTypes['RegisterResponse']>, ParentType, ContextType, RequireFields<MutationRegisterArgs, 'email' | 'password' | 'username'>>;
+  updateRecord?: Resolver<Maybe<ResolversTypes['UpdateRecordResponse']>, ParentType, ContextType, RequireFields<MutationUpdateRecordArgs, 'inUserId' | 'newValue'>>;
 };
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
@@ -344,7 +361,7 @@ export type QueryResolvers<ContextType = any, ParentType extends ResolversParent
 };
 
 export type RecordResolvers<ContextType = any, ParentType extends ResolversParentTypes['Record'] = ResolversParentTypes['Record']> = {
-  createdAt?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  createdAt?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   device?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   inUserId?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   profile?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
@@ -357,6 +374,13 @@ export type RecordResolvers<ContextType = any, ParentType extends ResolversParen
 export type RegisterResponseResolvers<ContextType = any, ParentType extends ResolversParentTypes['RegisterResponse'] = ResolversParentTypes['RegisterResponse']> = {
   message?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   success?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type UpdateRecordResponseResolvers<ContextType = any, ParentType extends ResolversParentTypes['UpdateRecordResponse'] = ResolversParentTypes['UpdateRecordResponse']> = {
+  message?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  record?: Resolver<Maybe<ResolversTypes['Record']>, ParentType, ContextType>;
+  success?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
@@ -385,6 +409,7 @@ export type Resolvers<ContextType = any> = {
   Query?: QueryResolvers<ContextType>;
   Record?: RecordResolvers<ContextType>;
   RegisterResponse?: RegisterResponseResolvers<ContextType>;
+  UpdateRecordResponse?: UpdateRecordResponseResolvers<ContextType>;
   User?: UserResolvers<ContextType>;
 };
 
