@@ -74,7 +74,7 @@ type Mutation {
   register(username: String!, email: String!, password: String!): RegisterResponse
   addFilter(type: AddFilterListType!, regex: String!): AddFilterResponse
   changeFilterType(type: FilterListType!): ChangeFilterTypeResponse
-  addProfile(profileName: String!): UpdateProfileResponse
-  deleteProfile(profileName: String!): UpdateProfileResponse
-  renameProfile(originalProfileName: String!, newProfileName: String!): RenameProfileResponse
+  addProfile(profile: String!): UpdateProfileResponse
+  deleteProfile(profile: String!): UpdateProfileResponse
+  renameProfile(originalProfile: String!, newProfile: String!): RenameProfileResponse
 }

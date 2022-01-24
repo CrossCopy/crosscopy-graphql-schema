@@ -346,7 +346,7 @@
             "description": null,
             "args": [
               {
-                "name": "profileName",
+                "name": "profile",
                 "description": null,
                 "type": {
                   "kind": "NON_NULL",
@@ -481,7 +481,7 @@
             "description": null,
             "args": [
               {
-                "name": "profileName",
+                "name": "profile",
                 "description": null,
                 "type": {
                   "kind": "NON_NULL",
@@ -645,7 +645,7 @@
             "description": null,
             "args": [
               {
-                "name": "newProfileName",
+                "name": "newProfile",
                 "description": null,
                 "type": {
                   "kind": "NON_NULL",
@@ -661,7 +661,7 @@
                 "deprecationReason": null
               },
               {
-                "name": "originalProfileName",
+                "name": "originalProfile",
                 "description": null,
                 "type": {
                   "kind": "NON_NULL",
