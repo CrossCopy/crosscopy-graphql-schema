@@ -1,0 +1,6 @@
+mutation addFilter($type: AddFilterListType!, $regex: String!) {
+  addFilter(type: $type, regex: $regex) {
+    success
+    message
+  }
+}

@@ -1,0 +1,6 @@
+mutation renameProfile($originalProfile: String!, $newProfile: String!) {
+  renameProfile(originalProfile: $originalProfile, newProfile: $newProfile) {
+    success
+    message
+  }
+}
