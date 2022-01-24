@@ -1,0 +1,6 @@
+mutation addProfile($profile: String!) {
+  addProfile(profile: $profile) {
+    success
+    message
+  }
+}

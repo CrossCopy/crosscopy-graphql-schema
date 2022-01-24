@@ -1,0 +1,6 @@
+mutation deleteProfile($profile: String!) {
+  deleteProfile(profile: $profile) {
+    success
+    message
+  }
+}
