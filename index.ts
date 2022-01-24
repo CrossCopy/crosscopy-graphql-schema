@@ -86,7 +86,7 @@ export type MutationAddFilterArgs = {
 
 
 export type MutationAddProfileArgs = {
-  profileName: Scalars['String'];
+  profile: Scalars['String'];
 };
 
 
@@ -104,7 +104,7 @@ export type MutationChangeFilterTypeArgs = {
 
 
 export type MutationDeleteProfileArgs = {
-  profileName: Scalars['String'];
+  profile: Scalars['String'];
 };
 
 
@@ -127,8 +127,8 @@ export type MutationRegisterArgs = {
 
 
 export type MutationRenameProfileArgs = {
-  newProfileName: Scalars['String'];
-  originalProfileName: Scalars['String'];
+  newProfile: Scalars['String'];
+  originalProfile: Scalars['String'];
 };
 
 
@@ -426,14 +426,14 @@ export type LoginResponseResolvers<ContextType = any, ParentType extends Resolve
 
 export type MutationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = {
   addFilter?: Resolver<Maybe<ResolversTypes['AddFilterResponse']>, ParentType, ContextType, RequireFields<MutationAddFilterArgs, 'regex' | 'type'>>;
-  addProfile?: Resolver<Maybe<ResolversTypes['UpdateProfileResponse']>, ParentType, ContextType, RequireFields<MutationAddProfileArgs, 'profileName'>>;
+  addProfile?: Resolver<Maybe<ResolversTypes['UpdateProfileResponse']>, ParentType, ContextType, RequireFields<MutationAddProfileArgs, 'profile'>>;
   addRecord?: Resolver<Maybe<ResolversTypes['AddRecordResponse']>, ParentType, ContextType, RequireFields<MutationAddRecordArgs, 'device' | 'profile' | 'type' | 'value'>>;
   changeFilterType?: Resolver<Maybe<ResolversTypes['ChangeFilterTypeResponse']>, ParentType, ContextType, RequireFields<MutationChangeFilterTypeArgs, 'type'>>;
-  deleteProfile?: Resolver<Maybe<ResolversTypes['UpdateProfileResponse']>, ParentType, ContextType, RequireFields<MutationDeleteProfileArgs, 'profileName'>>;
+  deleteProfile?: Resolver<Maybe<ResolversTypes['UpdateProfileResponse']>, ParentType, ContextType, RequireFields<MutationDeleteProfileArgs, 'profile'>>;
   deleteRecord?: Resolver<Maybe<ResolversTypes['DeleteRecordResponse']>, ParentType, ContextType, RequireFields<MutationDeleteRecordArgs, 'inUserId'>>;
   login?: Resolver<Maybe<ResolversTypes['LoginResponse']>, ParentType, ContextType, RequireFields<MutationLoginArgs, 'email' | 'password'>>;
   register?: Resolver<Maybe<ResolversTypes['RegisterResponse']>, ParentType, ContextType, RequireFields<MutationRegisterArgs, 'email' | 'password' | 'username'>>;
-  renameProfile?: Resolver<Maybe<ResolversTypes['RenameProfileResponse']>, ParentType, ContextType, RequireFields<MutationRenameProfileArgs, 'newProfileName' | 'originalProfileName'>>;
+  renameProfile?: Resolver<Maybe<ResolversTypes['RenameProfileResponse']>, ParentType, ContextType, RequireFields<MutationRenameProfileArgs, 'newProfile' | 'originalProfile'>>;
   updateRecord?: Resolver<Maybe<ResolversTypes['UpdateRecordResponse']>, ParentType, ContextType, RequireFields<MutationUpdateRecordArgs, 'inUserId' | 'newValue'>>;
 };
 
