@@ -54,6 +54,11 @@ type AddFilterResponse {
   message: String
 }
 
+type DeleteFilterResponse {
+  success: Boolean
+  message: String
+}
+
 type ChangeFilterTypeResponse {
   success: Boolean
   message: String
@@ -76,5 +81,6 @@ type Mutation {
   changeFilterType(type: FilterListType!): ChangeFilterTypeResponse
   addProfile(profile: String!): UpdateProfileResponse
   deleteProfile(profile: String!): UpdateProfileResponse
+  deleteFilter(filter: String!, filterListType: FilterListType!): DeleteFilterResponse
   renameProfile(originalProfile: String!, newProfile: String!): RenameProfileResponse
 }

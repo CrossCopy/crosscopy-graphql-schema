@@ -44,6 +44,12 @@ export type ChangeFilterTypeResponse = {
   success?: Maybe<Scalars['Boolean']>;
 };
 
+export type DeleteFilterResponse = {
+  __typename?: 'DeleteFilterResponse';
+  message?: Maybe<Scalars['String']>;
+  success?: Maybe<Scalars['Boolean']>;
+};
+
 export type DeleteRecordResponse = {
   __typename?: 'DeleteRecordResponse';
   message?: Maybe<Scalars['String']>;
@@ -70,6 +76,7 @@ export type Mutation = {
   addProfile?: Maybe<UpdateProfileResponse>;
   addRecord?: Maybe<AddRecordResponse>;
   changeFilterType?: Maybe<ChangeFilterTypeResponse>;
+  deleteFilter?: Maybe<DeleteFilterResponse>;
   deleteProfile?: Maybe<UpdateProfileResponse>;
   deleteRecord?: Maybe<DeleteRecordResponse>;
   login?: Maybe<LoginResponse>;
@@ -100,6 +107,12 @@ export type MutationAddRecordArgs = {
 
 export type MutationChangeFilterTypeArgs = {
   type: FilterListType;
+};
+
+
+export type MutationDeleteFilterArgs = {
+  filter: Scalars['String'];
+  filterListType: FilterListType;
 };
 
 
@@ -308,6 +321,7 @@ export type ResolversTypes = {
   AddRecordResponse: ResolverTypeWrapper<AddRecordResponse>;
   Int: ResolverTypeWrapper<Scalars['Int']>;
   ChangeFilterTypeResponse: ResolverTypeWrapper<ChangeFilterTypeResponse>;
+  DeleteFilterResponse: ResolverTypeWrapper<DeleteFilterResponse>;
   DeleteRecordResponse: ResolverTypeWrapper<DeleteRecordResponse>;
   FilterListType: FilterListType;
   LoginResponse: ResolverTypeWrapper<LoginResponse>;
@@ -332,6 +346,7 @@ export type ResolversParentTypes = {
   AddRecordResponse: AddRecordResponse;
   Int: Scalars['Int'];
   ChangeFilterTypeResponse: ChangeFilterTypeResponse;
+  DeleteFilterResponse: DeleteFilterResponse;
   DeleteRecordResponse: DeleteRecordResponse;
   LoginResponse: LoginResponse;
   Mutation: {};
@@ -410,6 +425,12 @@ export type ChangeFilterTypeResponseResolvers<ContextType = any, ParentType exte
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
+export type DeleteFilterResponseResolvers<ContextType = any, ParentType extends ResolversParentTypes['DeleteFilterResponse'] = ResolversParentTypes['DeleteFilterResponse']> = {
+  message?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  success?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
 export type DeleteRecordResponseResolvers<ContextType = any, ParentType extends ResolversParentTypes['DeleteRecordResponse'] = ResolversParentTypes['DeleteRecordResponse']> = {
   message?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   success?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
@@ -429,6 +450,7 @@ export type MutationResolvers<ContextType = any, ParentType extends ResolversPar
   addProfile?: Resolver<Maybe<ResolversTypes['UpdateProfileResponse']>, ParentType, ContextType, RequireFields<MutationAddProfileArgs, 'profile'>>;
   addRecord?: Resolver<Maybe<ResolversTypes['AddRecordResponse']>, ParentType, ContextType, RequireFields<MutationAddRecordArgs, 'device' | 'profile' | 'type' | 'value'>>;
   changeFilterType?: Resolver<Maybe<ResolversTypes['ChangeFilterTypeResponse']>, ParentType, ContextType, RequireFields<MutationChangeFilterTypeArgs, 'type'>>;
+  deleteFilter?: Resolver<Maybe<ResolversTypes['DeleteFilterResponse']>, ParentType, ContextType, RequireFields<MutationDeleteFilterArgs, 'filter' | 'filterListType'>>;
   deleteProfile?: Resolver<Maybe<ResolversTypes['UpdateProfileResponse']>, ParentType, ContextType, RequireFields<MutationDeleteProfileArgs, 'profile'>>;
   deleteRecord?: Resolver<Maybe<ResolversTypes['DeleteRecordResponse']>, ParentType, ContextType, RequireFields<MutationDeleteRecordArgs, 'inUserId'>>;
   login?: Resolver<Maybe<ResolversTypes['LoginResponse']>, ParentType, ContextType, RequireFields<MutationLoginArgs, 'email' | 'password'>>;
@@ -504,6 +526,7 @@ export type Resolvers<ContextType = any> = {
   AddFilterResponse?: AddFilterResponseResolvers<ContextType>;
   AddRecordResponse?: AddRecordResponseResolvers<ContextType>;
   ChangeFilterTypeResponse?: ChangeFilterTypeResponseResolvers<ContextType>;
+  DeleteFilterResponse?: DeleteFilterResponseResolvers<ContextType>;
   DeleteRecordResponse?: DeleteRecordResponseResolvers<ContextType>;
   LoginResponse?: LoginResponseResolvers<ContextType>;
   Mutation?: MutationResolvers<ContextType>;
