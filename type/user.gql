@@ -23,6 +23,7 @@ type User {
   recordCount: Int!
   lastRecordId: Int!
   recordQuota: Int!
+  activated: Boolean!
 }
 
 type Query {

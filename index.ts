@@ -230,6 +230,7 @@ export type UpdateRecordResponse = {
 export type User = {
   __typename?: 'User';
   _id: Scalars['String'];
+  activated: Scalars['Boolean'];
   blacklist: Array<Maybe<Scalars['String']>>;
   createdAt?: Maybe<Scalars['String']>;
   email: Scalars['String'];
@@ -507,6 +508,7 @@ export type UpdateRecordResponseResolvers<ContextType = any, ParentType extends 
 
 export type UserResolvers<ContextType = any, ParentType extends ResolversParentTypes['User'] = ResolversParentTypes['User']> = {
   _id?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  activated?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
   blacklist?: Resolver<Array<Maybe<ResolversTypes['String']>>, ParentType, ContextType>;
   createdAt?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   email?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
