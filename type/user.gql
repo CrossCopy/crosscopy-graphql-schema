@@ -31,6 +31,7 @@ type Query {
   userByEmail(email: String!): User
   userById(id: String!): User
   usernameExists(username: String!): Boolean
+  emailExists(email: String!): Boolean
 }
 
 type LoginResponse {

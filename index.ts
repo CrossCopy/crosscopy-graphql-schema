@@ -152,6 +152,7 @@ export type MutationUpdateRecordArgs = {
 
 export type Query = {
   __typename?: 'Query';
+  emailExists?: Maybe<Scalars['Boolean']>;
   me?: Maybe<User>;
   online?: Maybe<Scalars['Boolean']>;
   records?: Maybe<Array<Maybe<Record>>>;
@@ -159,6 +160,11 @@ export type Query = {
   userByEmail?: Maybe<User>;
   userById?: Maybe<User>;
   usernameExists?: Maybe<Scalars['Boolean']>;
+};
+
+
+export type QueryEmailExistsArgs = {
+  email: Scalars['String'];
 };
 
 
@@ -461,6 +467,7 @@ export type MutationResolvers<ContextType = any, ParentType extends ResolversPar
 };
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
+  emailExists?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType, RequireFields<QueryEmailExistsArgs, 'email'>>;
   me?: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType>;
   online?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
   records?: Resolver<Maybe<Array<Maybe<ResolversTypes['Record']>>>, ParentType, ContextType>;
