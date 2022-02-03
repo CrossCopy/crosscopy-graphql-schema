@@ -83,6 +83,7 @@ export type Mutation = {
   register?: Maybe<RegisterResponse>;
   renameProfile?: Maybe<RenameProfileResponse>;
   updateRecord?: Maybe<UpdateRecordResponse>;
+  verifyEmailOwnership?: Maybe<StandardResponse>;
 };
 
 
@@ -148,6 +149,12 @@ export type MutationRenameProfileArgs = {
 export type MutationUpdateRecordArgs = {
   inUserId: Scalars['Int'];
   newValue: Scalars['String'];
+};
+
+
+export type MutationVerifyEmailOwnershipArgs = {
+  email: Scalars['String'];
+  username: Scalars['String'];
 };
 
 export type Query = {
@@ -219,6 +226,12 @@ export enum Role {
   Admin = 'ADMIN',
   User = 'USER'
 }
+
+export type StandardResponse = {
+  __typename?: 'StandardResponse';
+  message?: Maybe<Scalars['String']>;
+  success?: Maybe<Scalars['Boolean']>;
+};
 
 export type UpdateProfileResponse = {
   __typename?: 'UpdateProfileResponse';
@@ -339,6 +352,7 @@ export type ResolversTypes = {
   RegisterResponse: ResolverTypeWrapper<RegisterResponse>;
   RenameProfileResponse: ResolverTypeWrapper<RenameProfileResponse>;
   Role: Role;
+  StandardResponse: ResolverTypeWrapper<StandardResponse>;
   UpdateProfileResponse: ResolverTypeWrapper<UpdateProfileResponse>;
   UpdateRecordResponse: ResolverTypeWrapper<UpdateRecordResponse>;
   User: ResolverTypeWrapper<User>;
@@ -361,6 +375,7 @@ export type ResolversParentTypes = {
   Record: Record;
   RegisterResponse: RegisterResponse;
   RenameProfileResponse: RenameProfileResponse;
+  StandardResponse: StandardResponse;
   UpdateProfileResponse: UpdateProfileResponse;
   UpdateRecordResponse: UpdateRecordResponse;
   User: User;
@@ -464,6 +479,7 @@ export type MutationResolvers<ContextType = any, ParentType extends ResolversPar
   register?: Resolver<Maybe<ResolversTypes['RegisterResponse']>, ParentType, ContextType, RequireFields<MutationRegisterArgs, 'email' | 'password' | 'username'>>;
   renameProfile?: Resolver<Maybe<ResolversTypes['RenameProfileResponse']>, ParentType, ContextType, RequireFields<MutationRenameProfileArgs, 'newProfile' | 'originalProfile'>>;
   updateRecord?: Resolver<Maybe<ResolversTypes['UpdateRecordResponse']>, ParentType, ContextType, RequireFields<MutationUpdateRecordArgs, 'inUserId' | 'newValue'>>;
+  verifyEmailOwnership?: Resolver<Maybe<ResolversTypes['StandardResponse']>, ParentType, ContextType, RequireFields<MutationVerifyEmailOwnershipArgs, 'email' | 'username'>>;
 };
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
@@ -495,6 +511,12 @@ export type RegisterResponseResolvers<ContextType = any, ParentType extends Reso
 };
 
 export type RenameProfileResponseResolvers<ContextType = any, ParentType extends ResolversParentTypes['RenameProfileResponse'] = ResolversParentTypes['RenameProfileResponse']> = {
+  message?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  success?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type StandardResponseResolvers<ContextType = any, ParentType extends ResolversParentTypes['StandardResponse'] = ResolversParentTypes['StandardResponse']> = {
   message?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   success?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
@@ -543,6 +565,7 @@ export type Resolvers<ContextType = any> = {
   Record?: RecordResolvers<ContextType>;
   RegisterResponse?: RegisterResponseResolvers<ContextType>;
   RenameProfileResponse?: RenameProfileResponseResolvers<ContextType>;
+  StandardResponse?: StandardResponseResolvers<ContextType>;
   UpdateProfileResponse?: UpdateProfileResponseResolvers<ContextType>;
   UpdateRecordResponse?: UpdateRecordResponseResolvers<ContextType>;
   User?: UserResolvers<ContextType>;

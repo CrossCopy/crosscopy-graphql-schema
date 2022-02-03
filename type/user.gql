@@ -76,6 +76,11 @@ type RenameProfileResponse {
   message: String
 }
 
+type StandardResponse {
+  success: Boolean
+  message: String
+}
+
 type Mutation {
   login(email: String!, password: String!): LoginResponse
   register(username: String!, email: String!, password: String!): RegisterResponse
@@ -85,4 +90,5 @@ type Mutation {
   deleteProfile(profile: String!): UpdateProfileResponse
   deleteFilter(filter: String!, filterListType: FilterListType!): DeleteFilterResponse
   renameProfile(originalProfile: String!, newProfile: String!): RenameProfileResponse
+  verifyEmailOwnership(username: String!, email: String!): StandardResponse
 }
