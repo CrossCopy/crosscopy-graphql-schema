@@ -81,6 +81,12 @@ type StandardResponse {
   message: String
 }
 
+type VerifyEmailOwnershipResponse {
+  success: Boolean
+  message: String
+  code: String
+}
+
 type Mutation {
   login(email: String!, password: String!): LoginResponse
   register(username: String!, email: String!, password: String!): RegisterResponse
@@ -90,5 +96,6 @@ type Mutation {
   deleteProfile(profile: String!): UpdateProfileResponse
   deleteFilter(filter: String!, filterListType: FilterListType!): DeleteFilterResponse
   renameProfile(originalProfile: String!, newProfile: String!): RenameProfileResponse
-  verifyEmailOwnership(username: String!, email: String!): StandardResponse
+  sendEmailOwnershipVerificationCode(username: String!, email: String!): StandardResponse
+  verifyEmailOwnership(username: String!, email: String!, code: String!): VerifyEmailOwnershipResponse
 }
