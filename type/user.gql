@@ -83,7 +83,7 @@ type StandardResponse {
 
 type Mutation {
   login(email: String!, password: String!): LoginResponse
-  register(username: String!, email: String!, password: String!): RegisterResponse
+  register(username: String!, email: String!, password: String!, code: String!): RegisterResponse
   addFilter(type: AddFilterListType!, regex: String!): AddFilterResponse
   changeFilterType(type: FilterListType!): ChangeFilterTypeResponse
   addProfile(profile: String!): UpdateProfileResponse

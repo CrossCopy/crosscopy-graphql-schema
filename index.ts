@@ -135,6 +135,7 @@ export type MutationLoginArgs = {
 
 
 export type MutationRegisterArgs = {
+  code: Scalars['String'];
   email: Scalars['String'];
   password: Scalars['String'];
   username: Scalars['String'];
@@ -484,7 +485,7 @@ export type MutationResolvers<ContextType = any, ParentType extends ResolversPar
   deleteProfile?: Resolver<Maybe<ResolversTypes['UpdateProfileResponse']>, ParentType, ContextType, RequireFields<MutationDeleteProfileArgs, 'profile'>>;
   deleteRecord?: Resolver<Maybe<ResolversTypes['DeleteRecordResponse']>, ParentType, ContextType, RequireFields<MutationDeleteRecordArgs, 'inUserId'>>;
   login?: Resolver<Maybe<ResolversTypes['LoginResponse']>, ParentType, ContextType, RequireFields<MutationLoginArgs, 'email' | 'password'>>;
-  register?: Resolver<Maybe<ResolversTypes['RegisterResponse']>, ParentType, ContextType, RequireFields<MutationRegisterArgs, 'email' | 'password' | 'username'>>;
+  register?: Resolver<Maybe<ResolversTypes['RegisterResponse']>, ParentType, ContextType, RequireFields<MutationRegisterArgs, 'code' | 'email' | 'password' | 'username'>>;
   renameProfile?: Resolver<Maybe<ResolversTypes['RenameProfileResponse']>, ParentType, ContextType, RequireFields<MutationRenameProfileArgs, 'newProfile' | 'originalProfile'>>;
   sendEmailOwnershipVerificationCode?: Resolver<Maybe<ResolversTypes['StandardResponse']>, ParentType, ContextType, RequireFields<MutationSendEmailOwnershipVerificationCodeArgs, 'email' | 'username'>>;
   updateRecord?: Resolver<Maybe<ResolversTypes['UpdateRecordResponse']>, ParentType, ContextType, RequireFields<MutationUpdateRecordArgs, 'inUserId' | 'newValue'>>;
