@@ -84,7 +84,7 @@ export type Mutation = {
   renameProfile?: Maybe<RenameProfileResponse>;
   sendEmailOwnershipVerificationCode?: Maybe<StandardResponse>;
   updateRecord?: Maybe<UpdateRecordResponse>;
-  verifyEmailOwnership?: Maybe<StandardResponse>;
+  verifyEmailOwnership?: Maybe<VerifyEmailOwnershipResponse>;
 };
 
 
@@ -273,6 +273,13 @@ export type User = {
   whitelist: Array<Maybe<Scalars['String']>>;
 };
 
+export type VerifyEmailOwnershipResponse = {
+  __typename?: 'VerifyEmailOwnershipResponse';
+  chanceLeft?: Maybe<Scalars['Int']>;
+  message?: Maybe<Scalars['String']>;
+  success?: Maybe<Scalars['Boolean']>;
+};
+
 
 
 export type ResolverTypeWrapper<T> = Promise<T> | T;
@@ -365,6 +372,7 @@ export type ResolversTypes = {
   UpdateProfileResponse: ResolverTypeWrapper<UpdateProfileResponse>;
   UpdateRecordResponse: ResolverTypeWrapper<UpdateRecordResponse>;
   User: ResolverTypeWrapper<User>;
+  VerifyEmailOwnershipResponse: ResolverTypeWrapper<VerifyEmailOwnershipResponse>;
 };
 
 /** Mapping between all available schema types and the resolvers parents */
@@ -388,6 +396,7 @@ export type ResolversParentTypes = {
   UpdateProfileResponse: UpdateProfileResponse;
   UpdateRecordResponse: UpdateRecordResponse;
   User: User;
+  VerifyEmailOwnershipResponse: VerifyEmailOwnershipResponse;
 };
 
 export type UnionDirectiveArgs = {
@@ -489,7 +498,7 @@ export type MutationResolvers<ContextType = any, ParentType extends ResolversPar
   renameProfile?: Resolver<Maybe<ResolversTypes['RenameProfileResponse']>, ParentType, ContextType, RequireFields<MutationRenameProfileArgs, 'newProfile' | 'originalProfile'>>;
   sendEmailOwnershipVerificationCode?: Resolver<Maybe<ResolversTypes['StandardResponse']>, ParentType, ContextType, RequireFields<MutationSendEmailOwnershipVerificationCodeArgs, 'email' | 'username'>>;
   updateRecord?: Resolver<Maybe<ResolversTypes['UpdateRecordResponse']>, ParentType, ContextType, RequireFields<MutationUpdateRecordArgs, 'inUserId' | 'newValue'>>;
-  verifyEmailOwnership?: Resolver<Maybe<ResolversTypes['StandardResponse']>, ParentType, ContextType, RequireFields<MutationVerifyEmailOwnershipArgs, 'code' | 'email' | 'username'>>;
+  verifyEmailOwnership?: Resolver<Maybe<ResolversTypes['VerifyEmailOwnershipResponse']>, ParentType, ContextType, RequireFields<MutationVerifyEmailOwnershipArgs, 'code' | 'email' | 'username'>>;
 };
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
@@ -563,6 +572,13 @@ export type UserResolvers<ContextType = any, ParentType extends ResolversParentT
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
+export type VerifyEmailOwnershipResponseResolvers<ContextType = any, ParentType extends ResolversParentTypes['VerifyEmailOwnershipResponse'] = ResolversParentTypes['VerifyEmailOwnershipResponse']> = {
+  chanceLeft?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+  message?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  success?: Resolver<Maybe<ResolversTypes['Boolean']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
 export type Resolvers<ContextType = any> = {
   AddFilterResponse?: AddFilterResponseResolvers<ContextType>;
   AddRecordResponse?: AddRecordResponseResolvers<ContextType>;
@@ -579,6 +595,7 @@ export type Resolvers<ContextType = any> = {
   UpdateProfileResponse?: UpdateProfileResponseResolvers<ContextType>;
   UpdateRecordResponse?: UpdateRecordResponseResolvers<ContextType>;
   User?: UserResolvers<ContextType>;
+  VerifyEmailOwnershipResponse?: VerifyEmailOwnershipResponseResolvers<ContextType>;
 };
 
 export type DirectiveResolvers<ContextType = any> = {
