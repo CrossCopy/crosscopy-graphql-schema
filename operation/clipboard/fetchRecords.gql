@@ -1,4 +1,4 @@
-query {
+query fetchRecords {
   records {
     type
     inUserId
