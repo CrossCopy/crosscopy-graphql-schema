@@ -1,0 +1,20 @@
+{
+  "dependencies": {
+    
+  },
+  "scripts": {
+    "gen": "graphql-codegen --config codegen.yml"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "2.6.1",
+    "@graphql-codegen/introspection": "2.1.1",
+    "@graphql-codegen/typescript": "2.4.3",
+    "@graphql-codegen/typescript-operations": "2.3.0",
+    "@graphql-codegen/urql-introspection": "2.1.1",
+    "@graphql-codegen/typescript-urql": "^3.5.1",
+    "@graphql-codegen/typescript-vue-apollo": "^3.2.4",
+    "@graphql-codegen/typescript-vue-apollo-smart-ops": "^2.2.3",
+    "@graphql-codegen/typescript-vue-urql": "^2.2.4",
+    "graphql": "^16.3.0"
+  }
+}
