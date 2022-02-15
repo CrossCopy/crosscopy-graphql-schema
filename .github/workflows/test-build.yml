@@ -14,9 +14,6 @@ jobs:
     steps:
       - name: Checkout 🛎
         uses: actions/checkout@master
-        with:
-          submodules: 'true'
-          token: ${{ secrets.PERSONALACCESSTOKEN }}
 
       - name: Setup node env 🏗
         uses: actions/setup-node@v2.5.1
