@@ -1,0 +1,7 @@
+mutation verifyEmailOwnership($username: String!, $email: String!, $code: String!) {
+  verifyEmailOwnership(username: $username, email: $email, code: $code) {
+    success
+    message
+    chanceLeft
+  }
+}

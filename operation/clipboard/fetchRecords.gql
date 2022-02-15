@@ -1,0 +1,11 @@
+query fetchRecords {
+  records {
+    type
+    inUserId
+    userId
+    value
+    profile
+    createdAt
+    device
+  }
+}

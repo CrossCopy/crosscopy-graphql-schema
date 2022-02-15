@@ -1,0 +1,6 @@
+mutation deleteRecord($inUserId: Int!) {
+  deleteRecord(inUserId: $inUserId) {
+    success
+    message
+  }
+}

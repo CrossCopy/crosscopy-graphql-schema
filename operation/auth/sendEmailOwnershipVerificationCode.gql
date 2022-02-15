@@ -1,0 +1,6 @@
+mutation sendEmailOwnershipVerificationCode($username: String!, $email: String!) {
+  sendEmailOwnershipVerificationCode(username: $username, email: $email) {
+    success
+    message
+  }
+}

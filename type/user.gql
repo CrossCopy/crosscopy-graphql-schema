@@ -22,6 +22,8 @@ type User {
   whitelist: [String]!
   recordCount: Int!
   lastRecordId: Int!
+  recordQuota: Int!
+  activated: Boolean!
 }
 
 type Query {
@@ -29,6 +31,7 @@ type Query {
   userByEmail(email: String!): User
   userById(id: String!): User
   usernameExists(username: String!): Boolean
+  emailExists(email: String!): Boolean
 }
 
 type LoginResponse {
@@ -43,7 +46,56 @@ type RegisterResponse {
   message: String
 }
 
+enum AddFilterListType {
+  WHITELIST
+  BLACKLIST
+}
+
+type AddFilterResponse {
+  success: Boolean
+  message: String
+}
+
+type DeleteFilterResponse {
+  success: Boolean
+  message: String
+}
+
+type ChangeFilterTypeResponse {
+  success: Boolean
+  message: String
+}
+
+type UpdateProfileResponse {
+  success: Boolean
+  message: String
+}
+
+type RenameProfileResponse {
+  success: Boolean
+  message: String
+}
+
+type StandardResponse {
+  success: Boolean
+  message: String
+}
+
+type VerifyEmailOwnershipResponse {
+  success: Boolean
+  message: String
+  chanceLeft: Int
+}
+
 type Mutation {
   login(email: String!, password: String!): LoginResponse
-  register(username: String!, email: String!, password: String!): RegisterResponse
+  register(username: String!, email: String!, password: String!, code: String!): RegisterResponse
+  addFilter(type: AddFilterListType!, regex: String!): AddFilterResponse
+  changeFilterType(type: FilterListType!): ChangeFilterTypeResponse
+  addProfile(profile: String!): UpdateProfileResponse
+  deleteProfile(profile: String!): UpdateProfileResponse
+  deleteFilter(filter: String!, filterListType: FilterListType!): DeleteFilterResponse
+  renameProfile(originalProfile: String!, newProfile: String!): RenameProfileResponse
+  sendEmailOwnershipVerificationCode(username: String!, email: String!): StandardResponse
+  verifyEmailOwnership(username: String!, email: String!, code: String!): VerifyEmailOwnershipResponse
 }

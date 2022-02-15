@@ -1,0 +1,22 @@
+overwrite: true
+schema: "./type/*.gql"
+documents: "./operation/**/*.gql"
+generates:
+  ./generated/urql.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-urql
+  ./generated/vue-apollo-smart-op.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-vue-apollo-smart-ops
+  ./generated/vue-apollo.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-vue-apollo
+  ./graphql.schema.json:
+    plugins:
+      - "introspection"
