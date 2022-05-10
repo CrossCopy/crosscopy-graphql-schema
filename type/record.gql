@@ -22,6 +22,7 @@ type AddRecordResponse {
   success: Boolean
   message: String
   id: Int
+  record: Record
 }
 
 type DeleteRecordResponse {
