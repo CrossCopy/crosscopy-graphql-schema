@@ -4,7 +4,7 @@ mutation login($email: String!, $password: String!) {
     message
     user {
       email
-      _id
+      id
       username
       profiles
       filterListType

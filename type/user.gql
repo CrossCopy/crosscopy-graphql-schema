@@ -10,7 +10,7 @@ enum FilterListType {
 }
 
 type User {
-  _id: String!
+  id: String!
   username: String!
   email: String!
   createdAt: String
