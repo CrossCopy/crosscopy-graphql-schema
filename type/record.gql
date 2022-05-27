@@ -1,43 +1,33 @@
 enum RecordType {
-  TEXT
-  IMAGE
+    TEXT
+    IMAGE
 }
 
 type Record {
-  inUserId: Int!
-  userId: String!
-  value: String!
-  type: RecordType!
-  profile: String!
-  createdAt: String
-  device: String!
-}
-
-type Query {
-  records: [Record]
-  recordsLaterThanId(id: Int!): [Record]
+    inUserId: Int!
+    userId: String!
+    value: String!
+    type: RecordType!
+    profile: String!
+    createdAt: String
+    device: String!
 }
 
 type AddRecordResponse {
-  success: Boolean
-  message: String
-  id: Int
-  record: Record
+    success: Boolean
+    message: String
+    id: Int
+    record: Record
 }
 
 type DeleteRecordResponse {
-  success: Boolean
-  message: String
+    success: Boolean
+    message: String
 }
 
 type UpdateRecordResponse {
-  success: Boolean!
-  message: String!
-  record: Record
+    success: Boolean!
+    message: String!
+    record: Record
 }
 
-type Mutation {
-  addRecord(type: RecordType!, value: String!, device: String!, profile: String!): AddRecordResponse
-  deleteRecord(inUserId: Int!): DeleteRecordResponse
-  updateRecord(inUserId: Int!, newValue: String!): UpdateRecordResponse
-}
