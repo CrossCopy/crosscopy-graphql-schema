@@ -4,6 +4,7 @@ enum RecordType {
 }
 
 type Record {
+    id: ID!
     inUserId: Int!
     userId: String!
     value: String!

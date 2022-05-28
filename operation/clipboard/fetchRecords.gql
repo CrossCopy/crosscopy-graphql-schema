@@ -1,9 +1,10 @@
 query fetchRecords {
   records {
-    type
+    id
     inUserId
     userId
     value
+    type
     profile
     createdAt
     device
