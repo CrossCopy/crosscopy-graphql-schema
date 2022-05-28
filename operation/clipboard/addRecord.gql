@@ -1,6 +1,7 @@
 mutation AddRecord($type: RecordType!, $value: String!, $device: String!, $profile: String!) {
   addRecord(type: $type, value: $value, device: $device, profile: $profile) {
     record {
+      id
       inUserId
       userId
       value

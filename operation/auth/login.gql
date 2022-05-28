@@ -10,6 +10,7 @@ mutation Login($email: String!, $password: String!) {
       createdAt
       profiles
       records {
+        id
         inUserId
         userId
         value
