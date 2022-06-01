@@ -12,6 +12,7 @@ type Record {
     profile: String!
     createdAt: String
     device: String!
+    expired: Boolean!
 }
 
 type AddRecordResponse {
