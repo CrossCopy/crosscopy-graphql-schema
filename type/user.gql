@@ -9,6 +9,11 @@ enum FilterListType {
     MIXED
 }
 
+enum Theme {
+    DARK
+    LIGHT
+}
+
 type User {
     id: ID!
     username: String!
@@ -24,6 +29,7 @@ type User {
     lastRecordId: Int!
     recordQuota: Int!
     activated: Boolean!
+    defaultTheme: Theme!
 }
 
 type LoginResponse {
