@@ -3,7 +3,7 @@ enum RecordType {
     IMAGE
 }
 
-type Record {
+type Rec {
     id: ID!
     inUserId: Int!
     userId: String!
@@ -17,20 +17,20 @@ type Record {
 }
 
 type AddRecordResponse {
-    success: Boolean
-    message: String
-    id: Int
-    record: Record
+    success: Boolean!
+    message: String!
+    id: Int!
+    record: Rec!
 }
 
 type DeleteRecordResponse {
-    success: Boolean
-    message: String
+    success: Boolean!
+    message: String!
 }
 
 type UpdateRecordResponse {
     success: Boolean!
     message: String!
-    record: Record
+    record: Rec!
 }
 

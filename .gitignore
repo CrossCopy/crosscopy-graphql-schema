@@ -1,10 +1,4 @@
 node_modules
 generated/
-
 graphql.schema.json
-
-index.ts
-
-resolvers.ts
-
-ops.ts
+*.log

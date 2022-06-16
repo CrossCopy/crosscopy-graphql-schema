@@ -1,6 +1,0 @@
-mutation changeFilterType($type: FilterListType!) {
-  changeFilterType(type: $type) {
-    success
-    message
-  }
-}
