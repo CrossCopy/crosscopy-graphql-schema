@@ -1,7 +1,8 @@
 {
   "name": "@crosscopy/graphql-schema",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "GraphQL Schema For CrossCopy",
+  "type": "module",
   "scripts": {
     "gen": "graphql-codegen --config codegen.yml"
   },
