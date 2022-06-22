@@ -1,87 +1,51 @@
 enum Role {
-    USER
-    ADMIN
-}
-
-enum FilterListType {
-    BLACKLIST
-    WHITELIST
-    MIXED
-}
-
-enum Theme {
-    DARK
-    LIGHT
+  USER
+  ADMIN
 }
 
 type User {
-    id: ID!
-    username: String!
-    email: String!
-    createdAt: String
-    profiles: [String]
-    records: [Record]
-    role: Role!
-    filterListType: FilterListType!
-    blacklist: [String]!
-    whitelist: [String]!
-    recordCount: Int!
-    lastRecordId: Int!
-    recordQuota: Int!
-    activated: Boolean!
-    defaultTheme: Theme!
+  id: ID!
+  username: String!
+  email: String!
+  createdAt: String
+  profiles: [String]
+  records: [Rec]
+  role: Role!
+  recordCount: Int!
+  lastRecordId: Int!
+  recordQuota: Int!
+  activated: Boolean!
 }
 
 type LoginResponse {
-    accessToken: String
-    user: User
-    success: Boolean
-    message: String
+  accessToken: String
+  user: User
+  success: Boolean
+  message: String
 }
 
 type RegisterResponse {
-    success: Boolean
-    message: String
-}
-
-enum AddFilterListType {
-    WHITELIST
-    BLACKLIST
-}
-
-type AddFilterResponse {
-    success: Boolean
-    message: String
-}
-
-type DeleteFilterResponse {
-    success: Boolean
-    message: String
-}
-
-type ChangeFilterTypeResponse {
-    success: Boolean
-    message: String
+  success: Boolean
+  message: String
 }
 
 type UpdateProfileResponse {
-    success: Boolean
-    message: String
+  success: Boolean
+  message: String
 }
 
 type RenameProfileResponse {
-    success: Boolean
-    message: String
+  success: Boolean
+  message: String
 }
 
 type StandardResponse {
-    success: Boolean
-    message: String
+  success: Boolean
+  message: String
 }
 
 type VerifyEmailOwnershipResponse {
-    success: Boolean
-    message: String
-    chanceLeft: Int
+  success: Boolean
+  message: String
+  chanceLeft: Int
 }
-

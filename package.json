@@ -1,20 +1,40 @@
 {
-  "dependencies": {
-    
-  },
+  "name": "@crosscopy/graphql-schema",
+  "version": "0.0.1",
+  "description": "GraphQL Schema For CrossCopy",
   "scripts": {
     "gen": "graphql-codegen --config codegen.yml"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CrossCopy/crosscopy-graphql-schema.git"
+  },
+  "keywords": [
+    "graphql",
+    "crosscopy",
+    "schema"
+  ],
+  "author": "Huakun Shen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CrossCopy/crosscopy-graphql-schema/issues"
+  },
+  "homepage": "https://github.com/CrossCopy/crosscopy-graphql-schema#readme",
   "devDependencies": {
     "@graphql-codegen/cli": "2.6.1",
     "@graphql-codegen/introspection": "2.1.1",
+    "@graphql-codegen/typed-document-node": "^2.2.13",
     "@graphql-codegen/typescript": "2.4.3",
+    "@graphql-codegen/typescript-graphql-request": "^4.4.10",
     "@graphql-codegen/typescript-operations": "2.3.0",
-    "@graphql-codegen/urql-introspection": "2.1.1",
     "@graphql-codegen/typescript-urql": "^3.5.1",
     "@graphql-codegen/typescript-vue-apollo": "^3.2.4",
     "@graphql-codegen/typescript-vue-apollo-smart-ops": "^2.2.3",
     "@graphql-codegen/typescript-vue-urql": "^2.2.4",
-    "graphql": "^16.3.0"
-  }
+    "@graphql-codegen/urql-introspection": "2.1.1",
+    "graphql": "^16.5.0"
+  },
+  "files": [
+    "generated"
+  ]
 }

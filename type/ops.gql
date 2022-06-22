@@ -8,11 +8,8 @@ type Mutation {
     # User
     login(email: String!, password: String!): LoginResponse
     register(username: String!, email: String!, password: String!, code: String!): RegisterResponse
-    addFilter(type: AddFilterListType!, regex: String!): AddFilterResponse
-    changeFilterType(type: FilterListType!): ChangeFilterTypeResponse
     addProfile(profile: String!): UpdateProfileResponse
     deleteProfile(profile: String!): UpdateProfileResponse
-    deleteFilter(filter: String!, filterListType: FilterListType!): DeleteFilterResponse
     renameProfile(originalProfile: String!, newProfile: String!): RenameProfileResponse
     sendEmailOwnershipVerificationCode(username: String!, email: String!): StandardResponse
     verifyEmailOwnership(username: String!, email: String!, code: String!): VerifyEmailOwnershipResponse
@@ -22,8 +19,8 @@ type Query {
     # Root
     online: Boolean
     # Record
-    records: [Record]
-    recordsLaterThanId(id: Int!): [Record]
+    records: [Rec]
+    recordsLaterThanId(id: Int!): [Rec]
     # User
     me: User
     userByEmail(email: String!): User

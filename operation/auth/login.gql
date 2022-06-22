@@ -20,9 +20,6 @@ mutation Login($email: String!, $password: String!) {
         device
       }
       role
-      filterListType
-      blacklist
-      whitelist
       recordCount
       lastRecordId
       recordQuota
