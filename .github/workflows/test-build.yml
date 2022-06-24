@@ -30,8 +30,8 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Install dependencies 👨🏻‍💻
-        run: npm install
+        run: yarn install
 
 
       - name: Run Build
-        run: npm run gen
+        run: yarn gen
