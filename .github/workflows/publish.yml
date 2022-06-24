@@ -21,8 +21,12 @@ jobs:
         with:
           node-version: 12
           registry-url: https://npm.pkg.github.com/
-      - run: yarn
-      - run: yarn gen
+      - name: Install Dependencies
+        run: yarn
+      - name: Generate TypeScript
+        run: yarn gen
+      - name: Build
+        run: yarn build
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GPR_TOKEN}}

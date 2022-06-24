@@ -33,5 +33,8 @@ jobs:
         run: yarn install
 
 
-      - name: Run Build
+      - name: Generate TypeScript
         run: yarn gen
+
+      - name: Build
+        run: yarn build
