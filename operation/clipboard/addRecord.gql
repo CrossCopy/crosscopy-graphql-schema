@@ -2,7 +2,6 @@ mutation addRecord($type: RecordType!, $value: String!, $device: String!, $profi
   addRecord(type: $type, value: $value, device: $device, profile: $profile) {
     record {
       id
-      inUserId
       userId
       value
       type

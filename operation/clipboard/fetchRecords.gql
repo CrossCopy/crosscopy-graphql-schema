@@ -1,7 +1,6 @@
 query fetchRecords {
   records {
     id
-    inUserId
     userId
     value
     type
