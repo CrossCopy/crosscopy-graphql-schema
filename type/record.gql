@@ -51,7 +51,7 @@ type Rec {
 type AddRecordResponse {
     success: Boolean!
     message: String!
-    id: Int!
+    id: ID! # id of the record in the database
     record: Rec!
 }
 
