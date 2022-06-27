@@ -48,6 +48,13 @@ type Mutation {
     profile: String!
   ): AddRecordResponse
   
+  """
+  Upload records from client side. Client should know which records haven't been uploaded yet.
+  Return an array of id mapping. Uploaded records don't have database id. Server will save them and assign database id to them.
+  And server will return an array of id-uuid pairs to client. So that client can update its local records with database id.
+  """
+  uploadRecords(records: [TextRecInput]!): [IdMapping]!
+
   deleteRecord(uuid: ID!): DeleteRecordResponse
 
   """
@@ -103,4 +110,10 @@ type Query {
   userById(id: String!): User
   usernameExists(username: String!): Boolean
   emailExists(email: String!): Boolean
+  """
+  Fetch all missing records from server
+  client sends an array of uuids of all of its records.
+  Server will compute the difference between the local records and the ones on server, and send back the ones missing on client-side.
+  """
+  fetchMissingRecords(uuids: [ID]!): [Rec]!
 }

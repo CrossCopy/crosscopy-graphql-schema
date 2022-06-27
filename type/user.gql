@@ -18,10 +18,11 @@ type User {
 }
 
 type LoginResponse {
-  accessToken: String
+  accessToken: String!
+  refreshToken: String
   user: User
-  success: Boolean
-  message: String
+  success: Boolean!
+  message: String!
 }
 
 type RegisterResponse {
