@@ -1,5 +1,5 @@
-query fetchRecords {
-  records {
+query fetchMissingRecords($uuids: [ID]!) {
+  fetchMissingRecords(uuids: $uuids) {
     id
     uuid
     userId

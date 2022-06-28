@@ -1,0 +1,20 @@
+mutation sync($uuids: [ID]!, $records: [TextRecInput]!) {
+  sync(uuids: $uuids, records: $records) {
+    newRecords {
+      id
+      uuid
+      userId
+      value
+      type
+      profile
+      createdAt
+      device
+      expired
+      deleted
+    }
+    idMapping {
+      id
+      uuid
+    }
+  }
+}

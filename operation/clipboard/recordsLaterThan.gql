@@ -1,5 +1,5 @@
-query fetchRecords {
-  records {
+query recordsLaterThan($date: Date!) {
+  recordsLaterThan(date: $date) {
     id
     uuid
     userId

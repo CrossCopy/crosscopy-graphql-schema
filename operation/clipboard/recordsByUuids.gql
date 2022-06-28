@@ -1,5 +1,5 @@
-query fetchRecords {
-  records {
+query recordsByUUID($uuids: [ID]!) {
+  recordsByUUID(uuids: $uuids) {
     id
     uuid
     userId

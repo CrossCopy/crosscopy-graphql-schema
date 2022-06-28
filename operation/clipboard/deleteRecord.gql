@@ -1,0 +1,6 @@
+mutation deleteRecord($uuid: ID!) {
+  deleteRecord(uuid: $uuid) {
+    success
+    message
+  }
+}

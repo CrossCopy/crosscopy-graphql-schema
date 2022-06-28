@@ -1,16 +1,19 @@
-mutation addRecord($type: RecordType!, $value: String!, $device: String!, $profile: String!) {
+mutation AddRecord($type: RecordType!, $value: String!, $device: String!, $profile: String!) {
   addRecord(type: $type, value: $value, device: $device, profile: $profile) {
+    success
+    message
+    id
     record {
       id
+      uuid
       userId
       value
       type
       profile
       createdAt
       device
+      expired
+      deleted
     }
-    success
-    message
-    id
   }
 }

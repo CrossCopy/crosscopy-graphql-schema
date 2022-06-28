@@ -1,0 +1,6 @@
+mutation uploadRecords($records: [TextRecInput]!) {
+  uploadRecords(records: $records) {
+    id
+    uuid
+  }
+}

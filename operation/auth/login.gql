@@ -1,8 +1,7 @@
 mutation login($email: String!, $password: String!) {
   login(email: $email, password: $password) {
     accessToken
-    success
-    message
+    refreshToken
     user {
       id
       username
@@ -11,12 +10,15 @@ mutation login($email: String!, $password: String!) {
       profiles
       records {
         id
+        uuid
         userId
         value
         type
         profile
         createdAt
         device
+        expired
+        deleted
       }
       role
       recordCount
@@ -24,5 +26,7 @@ mutation login($email: String!, $password: String!) {
       recordQuota
       activated
     }
+    success
+    message
   }
 }
