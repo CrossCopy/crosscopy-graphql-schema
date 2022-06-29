@@ -81,6 +81,7 @@ type Mutation {
   ): RegisterResponse
   addProfile(profile: String!): UpdateProfileResponse
   deleteProfile(profile: String!): UpdateProfileResponse
+  refreshAccessToken(refreshToken: String!): RefreshAccessTokenResponse
   renameProfile(
     originalProfile: String!
     newProfile: String!

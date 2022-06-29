@@ -19,6 +19,7 @@ type User {
 
 type LoginResponse {
   accessToken: String!
+  """Optional"""
   refreshToken: String
   user: User
   success: Boolean!
@@ -28,6 +29,10 @@ type LoginResponse {
 type RegisterResponse {
   success: Boolean
   message: String
+}
+
+type RefreshAccessTokenResponse {
+  accessToken: String!
 }
 
 type UpdateProfileResponse {

@@ -1,6 +1,6 @@
 {
   "name": "@crosscopy/graphql-schema",
-  "version": "0.1.0-pre-alpha.9",
+  "version": "0.1.0-pre-alpha.18",
   "description": "GraphQL Schema For CrossCopy",
   "types": "./dist/index.d.ts",
   "main": "./dist/index.js",
