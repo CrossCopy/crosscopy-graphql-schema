@@ -1,4 +1,7 @@
 input TextRecInput {
+  """The database ID tells server whether this record has already been uploaded (Create or Update). If id is null, create record; else, update record."""
+  id: ID!
+  deleted: Boolean!
   type: RecordType!
   value: String!
   device: String!
@@ -82,7 +85,7 @@ type Mutation {
   sync(uuids: [ID]!, records: [TextRecInput]!): SyncResponse
 
   """
-
+  Sync records with latest creation time to minimize network traffic
   """
   syncByLatestCreationTime(latestCreationTime: Date!, records: [TextRecInput]!): SyncByLatestCreationTimeResponse
 
