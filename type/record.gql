@@ -46,6 +46,8 @@ type Rec {
     records retained for a period of time, for features like recovery of plan upgrade
     """
     deleted: Boolean!
+
+    deletedAt: Date
 }
 
 type AddRecordResponse {

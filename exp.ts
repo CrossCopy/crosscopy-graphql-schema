@@ -1,8 +1,3 @@
-import { OperationResult } from "urql";
-import  { types } from "./index";
+import { requests as req } from "./index";
 
-const x: types.DeleteRecordResponse = {
-  message: "",
-  success: true,
-};
-
+const type = req.RecordType.Image;
